@@ -1,0 +1,78 @@
+.Login{
+    background-color: rgb(23,34,76);
+    display: flex;
+    flex-grow:1;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+.LoginBox{
+    display: flex;
+    width:60%;
+    justify-content: center;
+    height:60%;
+}
+.WelcomeQuizzy{
+    background-color: rgb(106,197,240);
+    display: flex;
+    /* justify-content: space-around; */
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    width:50%;
+    padding-top: 15%;
+    padding-bottom: 15%;
+}
+.Quizzy{
+    color:white;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: Helvetica, sans-serif;
+    padding-top:5%;
+}
+.Welcome{
+    font-size: 25px;
+    font-weight: bold;
+    font-family:  Helvetica, sans-serif
+}
+.LoginForm{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding:5%;
+    width:40%;
+}
+.LoginHeading{
+    text-align: left;
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+.Input{
+    text-align: left;
+    text-align: left;
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+.UserInput{
+    width:90%;
+    flex-grow:1;
+    height:25px;
+    margin-top:5px;
+    border:2px solid black;
+}
+.LoginBtn{
+    border: 2px solid black;
+    border-radius: 10px;
+    width:65%;
+    margin-bottom:10%;
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    padding:10px;
+}
