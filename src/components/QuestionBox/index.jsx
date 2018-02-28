@@ -5,7 +5,7 @@ import './QuestionBox.css';
 
 const QuestionBox = (props) => {
   const optionHolder = [];
-  let flag = 0;
+  //   let flag = 0;
   let selectedValue = '';
   console.log(props.answers);
   for (let j = 0; j < props.answers.length; j += 1) {
@@ -13,7 +13,7 @@ const QuestionBox = (props) => {
     // console.log(typeof (props.questionId));
     const qId = props.questionId.toString();
     if (Object.keys(props.answers[j])[0] === qId) {
-      flag = 1;
+    //   flag = 1;
       selectedValue = props.answers[j][qId];
       console.log('selected', selectedValue);
       break;
@@ -24,12 +24,12 @@ const QuestionBox = (props) => {
       optionHolder.push(<div className="Radio">
         <input type="radio" checked value={props.options[i]} name="option" onClick={value => props.addAnswer(props.questionId, value.target.value)} />
         {props.options[i]}
-      </div>);
+                        </div>);
     } else {
       optionHolder.push(<div className="Radio">
         <input type="radio" value={props.options[i]} name="option" onClick={value => props.addAnswer(props.questionId, value.target.value)} />
         {props.options[i]}
-                        </div>);
+      </div>);
     }
     // }
   }

@@ -3,6 +3,7 @@ import './App.css';
 import Header from '../Header';
 import Login from '../Login';
 import QuizBody from '../QuizBody';
+import ScorePage from '../ScorePage';
 
 class App extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class App extends Component {
       username: '',
       page: 1,
       userObj: {},
+      score: 0,
     };
   }
   onTextChange=(text) => {
@@ -44,6 +46,22 @@ updateUser=() => {
   });
   return promise;
 }
+
+userScore=(userScore) => {
+  this.setState({
+    score: userScore,
+    page: 3,
+  });
+}
+
+loginAgain=() => {
+  this.setState({
+    username: '',
+    page: 1,
+    userObj: {},
+    score: 0,
+  });
+}
 render() {
   if (this.state.page === 1) {
     return (
@@ -56,12 +74,23 @@ render() {
         />
       </div>
     );
+  } else if (this.state.page === 2) {
+    return (
+      <div className="App">
+        <Header username={this.state.username} />
+        <QuizBody
+          user={this.state.userObj}
+          displayScore={score => this.userScore(score)}
+          updateUser={() => this.updateUser()}
+        />
+      </div>
+    );
   }
 
   return (
     <div className="App">
       <Header username={this.state.username} />
-      <QuizBody user={this.state.userObj} updateUser={() => this.updateUser()} />
+      <ScorePage score={this.state.score} username={this.state.username} logout={() => this.loginAgain()} />
     </div>
   );
 }

@@ -6,7 +6,7 @@
     align-content: center;
     align-items: center;
     text-align: center;
-    
+    height:100vh;
 }
 .LoginBox{
     display: flex;
@@ -17,14 +17,15 @@
 .WelcomeQuizzy{
     background-color: rgb(106,197,240);
     display: flex;
-    /* justify-content: space-around; */
+    justify-content: space-center;
     align-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
     width:50%;
+    top:50%;
     padding-top: 15%;
-    padding-bottom: 15%;
+    /* padding-bottom: 15%; */
 }
 .Quizzy{
     color:white;
@@ -36,7 +37,7 @@
 .Welcome{
     font-size: 25px;
     font-weight: bold;
-    font-family:  Helvetica, sans-serif
+    font-family:  Helvetica, sans-serif;
 }
 .LoginForm{
     background-color: white;

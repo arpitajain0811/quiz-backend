@@ -9,11 +9,11 @@ class QuizBody extends Component {
     this.state = {
       questions: [],
       answers: [],
+      allAnswered: false,
     };
   }
   componentDidMount() {
     let answersArray = [];
-    console.log(this.props.user.answers);
     const userName = JSON.stringify(this.props.user.answers);
     if (userName !== JSON.stringify({})) {
       const userAnswers = this.props.user.answers;
@@ -21,7 +21,6 @@ class QuizBody extends Component {
     } else { answersArray = []; }
     const promise = this.checkDb();
     promise.then((response) => {
-      // console.log(response);
       if (response.message === 'empty') { this.getQuestions(answersArray); } else {
         this.setState({
           questions: response.result,
@@ -77,7 +76,7 @@ addAnswer=(id, value) => {
       const answerArray = this.state.answers;
       const key = Object.keys(this.state.answers[i])[0];
       answerArray[i][key.toString()] = value;
-      const response = this.putUserAnswers(answerArray);
+      const response = this.putUserAnswers(answerArray, 0);
       response.then(() => {
       });
       this.setState({
@@ -90,7 +89,7 @@ addAnswer=(id, value) => {
     answerObj[id] = value;
     const newAnswers = this.state.answers;
     newAnswers.push(answerObj);
-    const responsePromise = this.putUserAnswers(newAnswers);
+    const responsePromise = this.putUserAnswers(newAnswers, 0);
     responsePromise.then(() => {
       this.props.updateUser().then(() => {
         this.gettingUpdated();
@@ -99,13 +98,13 @@ addAnswer=(id, value) => {
     console.log('new', this.state.answers);
   }
 }
-putUserAnswers=(answerArray) => {
+putUserAnswers=(answerArray, userScore) => {
   console.log('please', answerArray);
   const promise = new Promise((resolve) => {
     fetch('/user', {
       body: JSON.stringify({
         username: this.props.user.username,
-        score: 0,
+        score: userScore,
         totalScore: this.state.questions.length,
         answers: answerArray,
       }),
@@ -114,7 +113,29 @@ putUserAnswers=(answerArray) => {
   });
   return promise;
 }
+
+calculateScore=() => {
+  console.log(this.state.questions);
+  console.log(this.state.answers);
+  let score = 0;
+  for (let i = 0; i < this.state.questions.length; i += 1) {
+    const qId = this.state.questions[i].questionid.toString();
+    for (let j = 0; j < this.state.answers.length; j += 1) {
+      const key = Object.keys(this.state.answers[j])[0];
+      if (key === qId && this.state.questions[i].answer === this.state.answers[j][key]) { score += 1; }
+    }
+  }
+  const promise = this.putUserAnswers(this.state.answers, score);
+  promise.then(() => {
+    this.props.displayScore(score);
+  });
+}
 render() {
+  if (this.state.questions.length !== 0 && this.state.questions.length === this.state.answers.length && this.state.allAnswered === false) {
+    this.setState({
+      allAnswered: true,
+    });
+  }
   if (this.state.questions.length !== 0) {
     const questionHolder = [];
     for (let i = 0; i < this.state.questions.length; i += 1) {
@@ -132,8 +153,14 @@ render() {
     }
     return (
       <div className="QuizBody" >
-        {questionHolder}
-        <button>Calculate</button>
+        <div className="QuestionHolder">{questionHolder}</div>
+        <div className="Calculate">
+          <button
+            disabled={!this.state.allAnswered}
+            onClick={() => { this.calculateScore(); }}
+          >Calculate
+          </button>
+        </div>
       </div>
     );
   } return null;
@@ -143,4 +170,5 @@ export default QuizBody;
 QuizBody.propTypes = {
   user: PropTypes.objectOf.isRequired,
   updateUser: PropTypes.func.isRequired,
+  displayScore: PropTypes.func.isRequired,
 };

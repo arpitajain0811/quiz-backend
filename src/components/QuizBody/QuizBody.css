@@ -1,0 +1,11 @@
+.QuizBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.Calculate{
+    align-content: center;
+    align-items: center;
+    display: flex;
+
+}
