@@ -5,16 +5,32 @@ import './QuestionBox.css';
 
 const QuestionBox = (props) => {
   const optionHolder = [];
+  let flag = 0;
+  let selectedValue = '';
   console.log(props.answers);
-  //   const answers = props.user.answers.replace(/'/g, '"');
-  //   const keys = Object.keys(JSON.parse(answers)).length;
+  for (let j = 0; j < props.answers.length; j += 1) {
+    // console.log(typeof (Object.keys(props.answers[j])[0]));
+    // console.log(typeof (props.questionId));
+    const qId = props.questionId.toString();
+    if (Object.keys(props.answers[j])[0] === qId) {
+      flag = 1;
+      selectedValue = props.answers[j][qId];
+      console.log('selected', selectedValue);
+      break;
+    }
+  }
   for (let i = 0; i < props.options.length; i += 1) {
-    // for(let j=0;j<keys;j++){
-    // if (Object.keys(JSON.parse(answers)) === this.props.questionId.toString()&&props.options[i]===);
-    optionHolder.push(<div className="Radio">
-      <input type="radio" value={props.options[i]} name="option" onClick={value => props.addAnswer(props.questionId, value.target.value)} />
-      {props.options[i]}
-                      </div>);
+    if (props.options[i] === selectedValue) {
+      optionHolder.push(<div className="Radio">
+        <input type="radio" checked value={props.options[i]} name="option" onClick={value => props.addAnswer(props.questionId, value.target.value)} />
+        {props.options[i]}
+      </div>);
+    } else {
+      optionHolder.push(<div className="Radio">
+        <input type="radio" value={props.options[i]} name="option" onClick={value => props.addAnswer(props.questionId, value.target.value)} />
+        {props.options[i]}
+                        </div>);
+    }
     // }
   }
   return (

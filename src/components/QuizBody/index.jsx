@@ -12,20 +12,12 @@ class QuizBody extends Component {
     };
   }
   componentDidMount() {
-    // console.log(this.props.user.answers);
     let answersArray = [];
     console.log(this.props.user.answers);
     const userName = JSON.stringify(this.props.user.answers);
     if (userName !== JSON.stringify({})) {
-      // console.log(this.props.user.answers);
-      // const answers = this.props.user.answers.replace(/'/g, '"');
       const userAnswers = this.props.user.answers;
-      // const keys = Object.keys(JSON.parse(answers)).length;
-      // const keys = userAnswers.length;
-      // for (let i = 0; i < keys; i += 1) {
-      // answersArray.push(JSON.parse(answers));
       answersArray = userAnswers;
-      // }
     } else { answersArray = []; }
     const promise = this.checkDb();
     promise.then((response) => {
@@ -40,25 +32,12 @@ class QuizBody extends Component {
   }
 
   gettingUpdated=() => {
-    // const answers = this.props.user.answers.replace(/'/g, '"');
     const userAnswers = this.props.user.answers;
     let answersArray = [];
-    // const keys = userAnswers.length;
-    // const keys = Object.keys(JSON.parse(answers)).length;
-    // for (let i = 0; i < keys; i += 1) {
     answersArray = userAnswers;
-    // answersArray.push(JSON.parse(answers));
-    // }
-    // const promise = this.checkDb();
-    // promise.then((response) => {
-    //   console.log(response);
-    //   if (response.message === 'empty') { this.getQuestions(answersArray); } else {
     this.setState({
-      // questions: response.result,
       answers: answersArray,
     });
-    //   }
-    // });
   }
 getQuestions=(answersArray) => {
   fetch('/questions', {
@@ -100,7 +79,6 @@ addAnswer=(id, value) => {
       answerArray[i][key.toString()] = value;
       const response = this.putUserAnswers(answerArray);
       response.then(() => {
-        console.log(response);
       });
       this.setState({
         answers: answerArray,
@@ -115,18 +93,10 @@ addAnswer=(id, value) => {
     const responsePromise = this.putUserAnswers(newAnswers);
     responsePromise.then(() => {
       this.props.updateUser().then(() => {
-        // console.log('2');
         this.gettingUpdated();
-
-        // console.log('new', this.state.answers);
       });
     });
-
-    // this.gettingUpdated();
     console.log('new', this.state.answers);
-    // this.setState({
-    //   answers: newAnswers.push(answerObj),
-    // });
   }
 }
 putUserAnswers=(answerArray) => {
