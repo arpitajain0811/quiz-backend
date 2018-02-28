@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from '../Header';
 import Login from '../Login';
-import QuizBody from '../UserBody';
+import QuizBody from '../QuizBody';
 
 class App extends Component {
   constructor(props) {
@@ -30,6 +30,20 @@ onSubmit=() => {
     });
   });
 }
+updateUser=() => {
+  const promise = new Promise((resolve) => {
+    fetch('/user', {
+      body: this.state.username,
+      method: 'PUT',
+    }).then(response => response.json()).then((responseObj) => {
+      this.setState({
+        userObj: responseObj,
+      });
+      resolve();
+    });
+  });
+  return promise;
+}
 render() {
   if (this.state.page === 1) {
     return (
@@ -47,7 +61,7 @@ render() {
   return (
     <div className="App">
       <Header username={this.state.username} />
-      <QuizBody user={this.state.userObj} />
+      <QuizBody user={this.state.userObj} updateUser={() => this.updateUser()} />
     </div>
   );
 }

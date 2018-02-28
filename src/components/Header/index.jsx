@@ -6,7 +6,7 @@ import './Header.css';
 const Header = props => (
   <div className="Header">
     <div className="Logo">Quizzy</div>
-    {props.username ? <div className="Hello">{props.username}</div> : null}
+    {props.username ? <div className="Hello">Hello {props.username}</div> : null}
 
   </div>
 );
