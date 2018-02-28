@@ -7,7 +7,7 @@ const Leader = (props) => {
   if (props.thisUser === 'true') {
     return (
       <div className="MeLeader">
-        <div className="Sno">{props.sno}</div>
+        <div className="Sno">{props.sno}.</div>
         <div className="LeaderName">{props.name}</div>
         <div className="LeaderScore">{props.score}</div>
       </div>
@@ -16,7 +16,7 @@ const Leader = (props) => {
 
   return (
     <div className="Leader">
-      <div className="Sno">{props.sno}</div>
+      <div className="Sno">{props.sno}.</div>
       <div className="LeaderName">{props.name}</div>
       <div className="LeaderScore">{props.score}</div>
     </div>

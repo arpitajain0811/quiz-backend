@@ -1,0 +1,29 @@
+.Leader{
+    flex-direction: row;
+    display: flex;
+    border:1px solid black;
+    justify-content: space-between;
+    padding:12px;
+    margin:18px;
+    font-family:Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: rgb(0,189,229);
+}
+.MeLeader{
+    flex-direction: row;
+    display: flex;
+    border:1px solid black;
+    justify-content: space-between;
+    padding:12px;
+    margin:18px;
+    font-family:Helvetica, sans-serif;
+    font-weight: bold;
+    background-color: rgb(6, 165, 14);
+}
+.LeaderName{
+    flex-grow: 1;
+    color:white;
+}
+.LeaderScore{
+color:white;
+}

@@ -17,14 +17,14 @@
 .WelcomeQuizzy{
     background-color: rgb(106,197,240);
     display: flex;
-    justify-content: space-center;
+    justify-content: center;
     align-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
     width:50%;
     top:50%;
-    padding-top: 15%;
+   
     /* padding-bottom: 15%; */
 }
 .Quizzy{
@@ -46,6 +46,8 @@
     justify-content: space-between;
     padding:5%;
     width:40%;
+    padding-top:10%;
+    padding-bottom:10%;
 }
 .LoginHeading{
     text-align: left;
@@ -61,7 +63,7 @@
     font-size: 15px;
 }
 .UserInput{
-    width:90%;
+    width:100%;
     flex-grow:1;
     height:25px;
     margin-top:5px;

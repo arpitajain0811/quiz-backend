@@ -2,10 +2,23 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-content: center;
 }
 .Calculate{
     align-content: center;
     align-items: center;
     display: flex;
-
+    align-items: center;
+    display:flex;
+    justify-content: center;
+    padding:35px;
+}
+.CalculateBtn{
+    padding:15px;
+    font-weight: bold;
+    font-size:15px;
+    border:2px solid black;
+    border-radius: 12px;
+    padding-left:20px;
+    padding-right:20px;
 }

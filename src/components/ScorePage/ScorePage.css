@@ -1,0 +1,61 @@
+.ScorePage{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-around;
+    padding:35px;
+}
+.ScoreBox{
+    padding-bottom:40px;
+    font-family:  Helvetica, sans-serif;
+    font-weight: bold;
+    
+}
+.YourScore
+{
+    color: rgb(252, 154, 18);
+    font-size:20px;
+    font-stretch: narrower;
+}
+.Score{
+    padding:15px;
+    font-weight: bolder;
+    font-stretch: ultra-expanded;
+    font-size: 22px;
+}
+.userScore{
+    font-size:35px;
+    font-weight: 100;
+}
+.LeaderBoard{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.PlayAgain{
+    display: flex;
+    justify-content: center;
+}
+.PlayBtn{
+    padding:10px;
+    font-weight: bold;
+    font-size:20px;
+    border:2px solid black;
+    border-radius: 12px;
+    padding-left:35px;
+    padding-right:35px;
+}
+.LeaderHeading{
+    align-items: center;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    font-weight: bold;
+    font-size:25px;
+    font-family:  Helvetica, sans-serif
+}
+.LeadersContainer{
+    display: flex;
+    flex-direction: column;
+}

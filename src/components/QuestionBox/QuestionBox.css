@@ -1,0 +1,44 @@
+.QuestionBox{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    margin:30px;
+}
+.QuestionNumber{
+    font-weight: bold;
+    border-bottom: 2px solid black;
+    font-family: Helvetica, sans-serif;
+    font-size: 15px;
+    padding:5px;
+    padding-left:20px;
+}
+.QuestionStatement{
+    border-bottom: 2px solid black;
+    padding:10px;
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: rgb(68,199,245);
+}
+.Radio{
+    margin:10px;
+    padding:3px;
+    font-family: Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+input[type='radio'] {
+    transform: scale(1.5);
+    background-color: white;
+    margin-right: 5px;
+    width:15px;
+    height:15px;
+    border: 2px solid black;
+    visibility: visible
+    
+}
+.Options{
+    padding:5px;
+    margin-bottom:5px;
+}

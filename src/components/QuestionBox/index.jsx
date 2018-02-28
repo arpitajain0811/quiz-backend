@@ -24,12 +24,12 @@ const QuestionBox = (props) => {
       optionHolder.push(<div className="Radio">
         <input type="radio" checked value={props.options[i]} name="option" onClick={value => props.addAnswer(props.questionId, value.target.value)} />
         {props.options[i]}
-                        </div>);
+      </div>);
     } else {
       optionHolder.push(<div className="Radio">
         <input type="radio" value={props.options[i]} name="option" onClick={value => props.addAnswer(props.questionId, value.target.value)} />
         {props.options[i]}
-      </div>);
+                        </div>);
     }
     // }
   }
@@ -37,10 +37,11 @@ const QuestionBox = (props) => {
     <div className="QuestionBox">
       <div className="QuestionNumber">Question {props.index + 1}</div>
       <div className="QuestionStatement">{props.question}</div>
-      <div className="Options" />
-      <form>
-        {optionHolder}
-      </form>
+      <div className="Options">
+        <form>
+          {optionHolder}
+        </form>
+      </div>
     </div>
   );
 };

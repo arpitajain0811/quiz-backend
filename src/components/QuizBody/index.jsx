@@ -156,6 +156,7 @@ render() {
         <div className="QuestionHolder">{questionHolder}</div>
         <div className="Calculate">
           <button
+            className="CalculateBtn"
             disabled={!this.state.allAnswered}
             onClick={() => { this.calculateScore(); }}
           >Calculate
